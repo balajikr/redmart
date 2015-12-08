@@ -12,19 +12,25 @@ angular
   .module('redmartApp', [
     'ngAnimate',
     'ngCookies',
-    'ngResource',
+    'ngMessages',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/home', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
+      })
+    .when('/createContact', {
+        templateUrl: 'views/createContact.html',
+        controller: 'contactCtrl',
+        controllerAs: 'contact'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+
