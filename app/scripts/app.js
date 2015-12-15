@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name redmartApp
- * @description
- * # redmartApp
- *
- * Main module of the application.
- */
 angular
   .module('redmartApp', [
     'ngAnimate',
@@ -19,7 +11,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/home', {
+      .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'

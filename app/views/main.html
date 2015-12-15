@@ -1,42 +1,49 @@
-<a href="#createContact">Create Contact</a>
-<div class="wraper" ng-controller="modifyCtrl">
+<a href="#/" ng-click="addShow =! addShow">Add Contact</a>
+<h3>List of contacts</h3>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name:</th>
-                        <th>Phone No.</th>
-                        <th>Email Id</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="tableData in tabelsData"><form>
-                        <td>
-                            <div ng-hide="viewField">{{tableData.name | uppercase}}</div>
-                            <div ng-show="modifyField"><input type="text" ng-model="tableData.name" /></div>
-                        </td>
-                         <td>
-                            <div ng-hide="viewField">{{tableData.phone}}</div>
-                            <div ng-show="modifyField"><input type="text" ng-model="tableData.phone" /></div>
-                        </td>
-                        <td>
-                            <div ng-hide="viewField">{{tableData.emailId}}</div>
-                            <div ng-show="modifyField"><input type="text" ng-model="tableData.emailId" /></div>
-                        </td>
-
-                        <td>
-                            <div ng-hide="viewField">{{tableData.address}}</div>
-                            <div ng-show="modifyField">
-                                <textarea ng-model="tableData.address"></textarea>
-                            </div>
-                        </td>
-                        <td>
-                            <button ng-hide="viewField" ng-click="modify(tableData)">Modify</button>
-                            <button ng-show="modifyField" ng-click="update(tableData)">Update</button>
-                            <button ng-hide="viewField">Add</button>
-                            <button ng-hide="viewField" ng-click="remove(tableData)">Remove</button>
-                        </td></form>
-                    </tr>
-                </tbody>
-            </table>
+<div ng-controller="MainCtrl">
+  <div ng-show="saveShow" class="well">
+    <label>Name</label> 
+        <input type="text" name="name" ng-model="newcontact.name"/>
+    <label>Email</label> 
+        <input type="text" name="email" ng-model="newcontact.email"/>
+    <label>Phone</label> 
+        <input type="text" name="phone" ng-model="newcontact.phone"/>
+        <br/>
+        <input type="hidden" ng-model="newcontact.id" />
+     <input type="button" id="idcheck" value="Save" ng-click="saveContact()" class="btn btn-primary"/>
+    </div>
+    
+    <div ng-show="addShow" class="well">
+    <label>Name</label> 
+        <input type="text" name="name" ng-model="newcontactname"/>
+    <label>Email</label> 
+        <input type="text" name="email" ng-model="newcontactemail"/>
+    <label>Phone</label> 
+        <input type="text" name="phone" ng-model="newcontactphone"/>
+        <br/>
+        <input type="hidden" ng-model="newcontactid" />
+     <input type="button" value="ADD" ng-click="addContact()" class="btn btn-primary"/>
+    </div>
+<table class="table table-striped table-bordered">
+<thead> 
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="contact in contacts">
+    <td>{{ contact.name }}</td>
+    <td>{{ contact.email }}</td>
+    <td>{{ contact.phone }}</td>
+    <td>
+        <a  href="#/" ng-click="edit(contact.id); addShow=true">edit</a> | 
+        <a href="#/" ng-click="delete(contact.id)">delete</a>
+    </td>
+ </tr>
+</tbody>
+</table>    
+</div>
