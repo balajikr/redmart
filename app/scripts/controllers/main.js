@@ -39,6 +39,9 @@ var i;
         $scope.newcontactphone="";
         $scope.addShow = false;
     };
+    $scope.addApper = function(){
+        $scope.addShow = true;
+    };
     
     $scope.saveContact = function() {
         
